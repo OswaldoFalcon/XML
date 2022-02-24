@@ -1,7 +1,6 @@
-
-import xml.etree.ElementTree as ET
+from lxml import etree
 import sys
-file = ET.parse(sys.argv[1]) #leemos argumento de consola
+file = etree.parse(sys.argv[1]) #leemos argumento de consola
 
 
 #seleccionamos una opcion
@@ -20,18 +19,18 @@ eligio=input("-Selecciona un opcion :") #introducimos una opcion
 
 
 if eligio=="1":
-   ruta1 = file.findall('.//book/title | //book/price')
+   ruta1 = file.xpath('//book/title | //book/price')
    for element in ruta1:
         print(element.text)
 
 elif eligio=="2":
-   ruta2 = file.findall('.//title | //price') 
+   ruta2 = file.xpath('//title | //price') 
    for element in ruta2:
        print(element.text)
 
 
 elif eligio=="3":
-    ruta3 = file.findall('.//book/title | //book/price')
+    ruta3 = file.xpath('//book/title | //book/price')
     for element in ruta3:
         print(element.text)
 
